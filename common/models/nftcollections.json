@@ -1,0 +1,94 @@
+{
+  "name": "collections",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "ExtraQueryFilters" : true,
+    "Validators" : true,
+    "Filters" : true,
+    "UtcDate": true,
+    "LowerCaseAddresses": {
+      "properties": ["address", "owner"]
+    },
+    "DisableRemoteMethod": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "findById": true,
+          "patchOrCreate": true,
+          "create": true,
+          "count": true,
+          "prototype.__get__tokens": true,
+          "prototype.__count__tokens": true
+        }
+      }
+    }
+  },
+  "properties": {
+    "address": {
+      "type": "string",
+      "id": true 
+    },
+    "owner": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "symbol": {
+      "type": "string"
+    },
+    "totalSupply": {
+      "type": "number"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true,
+      "default": "$now"
+    },
+    "updatedAt": {
+      "type": "date",
+      "required": true,
+      "default": "$now"
+    },
+    "avatar": {
+      "type": "string"
+    },
+    "banner": {
+      "type": "object"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "tokens": {
+      "type": "hasMany",
+      "model": "tokens",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "name": "joinBattleNft",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "ExtraQueryFilters" : true,
+    "Validators" : true,
+    "Filters" : true,
+    "UtcDate": true,
+    "DisableRemoteMethod": {
+      "remoting": {
+        "sharedMethods": {
+          "*": true
+        }
+      }
+    }
+  },
+  "properties": {
+    "tokenId": {
+      "type": "string"
+    },
+    "ipfsJson": {
+      "type": "object"
+    }
+  },
+  "validations": [],
+  "relations": {
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "fetchBattjeJoinIds": {
+      "accepts": [
+        {
+          "arg": "chainId",
+          "type": "number"
+        },
+        {
+          "arg": "ids",
+          "type": "array"
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "root": true
+      },
+      "description": "Fetches Multiple Gladiators from DB or SmartChain",
+      "http": {
+        "path": "/page/nfts/:chainId/:ids",
+        "verb": "get"
+      }
+    }
+  }
+}

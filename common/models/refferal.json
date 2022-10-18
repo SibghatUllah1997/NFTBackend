@@ -1,0 +1,45 @@
+{
+    "name":  "refferal",
+    "idInjection": true,
+    "options": {
+      "validateUpsert": true
+    },
+    "mixins": {
+      "ExtraQueryFilters" : true,
+      "Validators" : true,
+      "Filters" : true,
+      "UtcDate": true,
+      "DisableRemoteMethod": {
+        "remoting": {
+          "sharedMethods": {
+            "*": true
+          }
+        }
+      }
+    },
+    "properties": {
+      "accountAddress": {
+        "type": "string"
+      }
+    },
+    "validations": [],
+    "relations": {
+    },
+    "acls": [
+      {
+        "accessType": "READ",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW"
+      },
+      {
+        "accessType": "WRITE",
+        "principalType": "ROLE",
+        "principalId": "$everyone",
+        "permission": "ALLOW"
+      }
+    ],
+    "methods": {
+    }
+  }
+  

@@ -1,0 +1,11 @@
+{
+  "db": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "nftMarketplace",
+    "name": "db",
+    "connector": "mongodb",
+    "authSource": "admin"
+  }
+}

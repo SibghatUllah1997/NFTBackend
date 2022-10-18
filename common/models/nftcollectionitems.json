@@ -1,0 +1,100 @@
+{
+  "name": "tokens",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "ExtraQueryFilters" : true,
+    "Validators" : true,
+    "Filters" : true,
+    "UtcDate": true,
+    "LowerCaseAddresses": {
+      "properties": ["collectionsId"]
+    },
+    "DisableRemoteMethod": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "findById": true,
+          "patchOrCreate": true,
+          "create": true,
+          "count": true,
+          "fetchToken": true
+        }
+      }
+    }
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "image": {
+      "type": "object"
+    },
+    "collection": {
+      "type": "object"
+    },
+    "tokenId": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "collections": {
+      "type": "belongsTo",
+      "model": "collections",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "fetchToken": {
+      "accepts": [
+        {
+          "arg": "chainId",
+          "type": "number"
+        },
+        {
+          "arg": "collection",
+          "type": "string"
+        },
+        {
+          "arg": "tokenId",
+          "type": "string"
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "root": true
+      },
+      "description": "Fetches token from DB or SmartChain",
+      "http": {
+        "path": "/fetchToken/:chainId/:collection/:tokenId",
+        "verb": "get"
+      }
+    }
+  }
+}

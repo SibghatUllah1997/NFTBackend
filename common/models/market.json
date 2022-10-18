@@ -1,0 +1,40 @@
+{
+  "name": "market",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "generated": false
+    },
+    "epoch": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "round": {
+      "type": "belongsTo",
+      "model": "round",
+      "foreignKey": "epoch"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

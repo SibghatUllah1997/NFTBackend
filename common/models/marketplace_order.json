@@ -1,0 +1,81 @@
+{
+  "name": "marketplace_order",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "ExtraQueryFilters" : true,
+    "Validators" : true,
+    "Filters" : true,
+    "UtcDate": true,
+    "DisableRemoteMethod": {
+      "remoting": {
+        "sharedMethods": {
+          "*": true
+        }
+      }
+    }
+  },
+  "properties": {
+    "transaction_hash": {
+      "type": "string",
+      "id": true,
+      "generated": false
+    },
+    "block": {
+      "type": "number",
+      "required": true
+    },
+    "timestamp": {
+      "type": "number",
+      "required": true
+    },
+    "nftId": {
+      "type": "string",
+      "required": true
+    },
+    "nftAddress": {
+      "type": "string",
+      "required": true
+    },
+    "orderType": {
+      "type": "string",
+      "required": true
+    },
+    "askPrice": {
+      "type": "number",
+      "required": true
+    },
+    "seller": {
+      "type": "string",
+      "required": true
+    },
+    "buyer": {
+      "type": "string"
+    },
+    "case": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "name": "bet",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "roundId": {
+      "type": "string"
+    },
+    "userId": {
+      "type": "string"
+    },
+    "hash": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "position": {
+      "type": "string"
+    },
+    "claimed": {
+      "type": "boolean"
+    },
+    "claimedAmount": {
+      "type": "number"
+    },
+    "claimedHash": {
+      "type": "string"
+    },
+    "block": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "round": {
+      "type": "belongsTo",
+      "model": "round",
+      "foreignKey": ""
+    },
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "getTotalWon": {
+      "accepts": [
+        {"arg": "position", "type": "string", "required": true}
+      ],
+      "returns": { "arg": "data", "type": "object", "root": true},
+      "http": {"verb": "get", "path": "/getTotalWon"}
+    }
+  }
+}

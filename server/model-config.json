@@ -1,0 +1,101 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins",
+      "../node_modules/loopback-encryption-mixin",
+      "../node_modules/loopback-extra-query-filters/mixins",
+      "../node_modules/loopback-model-validator/mixins"
+    ]
+  },
+  "bet": {
+    "dataSource": "db",
+    "public": true
+  },
+  "market": {
+    "dataSource": "db",
+    "public": true,
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true
+        }
+      }
+    }
+  },
+  "round": {
+    "dataSource": "db",
+    "public": true
+  },
+  "user": {
+    "dataSource": "db"
+  },
+  "notyourbusiness": {
+    "dataSource": "db",
+    "public": false
+  },
+  "collections": {
+    "dataSource": "db",
+    "public": true
+  },
+  "tokens": {
+    "dataSource": "db",
+    "public": true
+  },
+  "mygladiators": {
+    "dataSource": "db",
+    "public": true
+  },
+  "marketplace_nft":{
+    "dataSource": "db",
+    "public": true
+  },
+  "marketplace_order":{
+    "dataSource": "db",
+    "public": true
+  },
+  "marketplace_trade":{
+    "dataSource": "db",
+    "public": true
+  },
+  "refferal": {
+    "dataSource": "db",
+    "public": false
+  },
+  "joinBattleNft": {
+    "dataSource": "db",
+    "public": true
+  },
+  "achievements": {
+    "dataSource": "db",
+    "public": true
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  }
+}

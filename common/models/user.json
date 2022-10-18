@@ -1,0 +1,102 @@
+{
+  "name": "user",
+  "base": "User",
+  "idInjection": false,
+  "restrictResetPasswordTokenScope": true,
+  "emailVerificationRequired": true,
+  "mixins": {
+    "ExtraQueryFilters" : true,
+    "Validators" : true,
+    "Filters" : true,
+    "UtcDate": true,
+    "LowerCaseAddresses": {
+      "properties": ["address"]
+    },
+    "DisableRemoteMethod": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true,
+          "findById": true,
+          "findOne": true,
+          "patchOrCreate": true,
+          "create": true,
+          "count": true
+        }
+      }
+    }
+  },
+  "properties": {
+    "signature": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "type": "string",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "string",
+      "id": true 
+    },
+    "created_at": {
+      "type": "date",
+      "required": true,
+      "default": "$now"
+    },
+    "totalBets" : {
+      "type": "number"
+    },
+    "totalBNB" : {
+      "type": "number"
+    },
+    "numberTokensListed" : {
+      "type": "number"
+    },
+    "numberTokensPurchased" : {
+      "type": "number"
+    },
+    "numberTokensSold" : {
+      "type": "number"
+    },
+    "totalVolumeInDENATokensPurchased" : {
+      "type": "number"
+    },
+    "totalVolumeInDENATokensSold" : {
+      "type": "number"
+    },
+    "totalVolumeInNRTTokensPurchased" : {
+      "type": "number"
+    },
+    "totalVolumeInNRTTokensSold" : {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

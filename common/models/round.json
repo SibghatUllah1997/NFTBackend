@@ -1,0 +1,95 @@
+{
+  "name": "round",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "generated": false
+    },
+    "epoch": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "failed": {
+      "type": "boolean",
+      "default": false
+    },
+    "previous": {
+      "type": "string"
+    },
+    "startTimestamp": {
+      "type": "number"
+    },
+    "startHash": {
+      "type": "string"
+    },
+    "lockTimestamp": {
+      "type": "number"
+    },
+    "lockHash": {
+      "type": "string"
+    },
+    "lockPrice": {
+      "type": "number"
+    },
+    "closeTimestamp": {
+      "type": "number"
+    },
+    "endHash": {
+      "type": "string"
+    },
+    "closePrice": {
+      "type": "number"
+    },
+    "totalBets": {
+      "type": "number"
+    },
+    "totalAmount": {
+      "type": "number"
+    },
+    "totalAmountTreasury": {
+      "type": "number"
+    },
+    "bullBets": {
+      "type": "number"
+    },
+    "bullAmount": {
+      "type": "number"
+    },
+    "bearBets": {
+      "type": "number"
+    },
+    "bearAmount": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "bets": {
+      "type": "hasMany",
+      "model": "bet",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}

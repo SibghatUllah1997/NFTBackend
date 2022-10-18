@@ -1,0 +1,82 @@
+{
+  "name": "mygladiators",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "ExtraQueryFilters" : true,
+    "Validators" : true,
+    "Filters" : true,
+    "UtcDate": true,
+    "DisableRemoteMethod": {
+      "remoting": {
+        "sharedMethods": {
+          "*": true
+        }
+      }
+    }
+  },
+  "properties": {
+    "tokenId": {
+      "type": "string",
+      "id": true,
+      "generated": false
+    },
+    "customization3DJson": {
+      "type": "object"
+    },
+    "ipfsJson": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string",
+      "default": "delisted"
+    }
+  },
+  "validations": [],
+  "relations": {
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "fetchMultipleGladiatorsIds": {
+      "accepts": [
+        {
+          "arg": "chainId",
+          "type": "number"
+        },
+        {
+          "arg": "ids",
+          "type": "array"
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "root": true
+      },
+      "description": "Fetches Multiple Gladiators from DB or SmartChain",
+      "http": {
+        "path": "/specific/:chainId/:ids",
+        "verb": "get"
+      }
+    }
+  }
+}

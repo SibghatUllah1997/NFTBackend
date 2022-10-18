@@ -1,0 +1,108 @@
+{
+  "name": "marketplace_nft",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "ExtraQueryFilters" : true,
+    "Validators" : true,
+    "Filters" : true,
+    "UtcDate": true,
+    "DisableRemoteMethod": {
+      "remoting": {
+        "sharedMethods": {
+          "*": true
+        }
+      }
+    }
+  },
+  "properties": {
+    "nftId": {
+      "type": "string",
+      "required": true
+    },
+    "nftAddress": {
+      "type": "string",
+      "required": true
+    },
+    "metadataUrl": {
+      "type": "string"
+    },
+    "currentSeller": {
+      "type": "string"
+    },
+    "updatedAt": {
+      "type": "number"
+    },
+    "currentAskPrice": {
+      "type": "number"
+    },
+    "latestTradedPrice": {
+      "type": "number"
+    },
+    "latestTradedPriceType": {
+      "type": "string"
+    },
+    "case": {
+      "type": "string"
+    },
+    "tradeVolumeDENA": {
+      "type": "number"
+    },
+    "tradeVolumeNRT": {
+      "type": "number"
+    },
+    "totalTrades": {
+      "type": "number"
+    },
+    "isTradeable": {
+      "type": "boolean"
+    }
+  },
+  "validations": [],
+  "relations": {
+  },
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+    "fetchMultipleGladiatorsIds": {
+      "accepts": [
+        {
+          "arg": "chainId",
+          "type": "number"
+        },
+        {
+          "arg": "ids",
+          "type": "array"
+        },
+        {
+          "arg": "options",
+          "type": "object",
+          "http": "optionsFromRequest"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "root": true
+      },
+      "description": "Fetches Multiple Gladiators from DB or SmartChain",
+      "http": {
+        "path": "/specific/:chainId/:ids",
+        "verb": "get"
+      }
+    }
+  }
+}

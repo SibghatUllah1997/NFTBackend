@@ -1,0 +1,51 @@
+{
+  "name": "notyourbusiness",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "chain": {
+      "type": "number",
+      "required": true
+    },
+    "which": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "mixins": {
+    "Encryption": {
+      "fields": ["content"],
+      "password": "226f8c266bd2765498e8b4a0866bae79ddb1abd68008a3fbb1445fca49016301",
+      "salt": "98e31a6607b8b15b4d5b91de54f4c09ffe4c4cf162aa532c70b5213754e2e703",
+      "iteration": 100,
+      "hashBytes": 16,
+      "hashAlgorithm": "sha1",
+      "hexIv": "cd5c632d26fde5e2eb61e521ad2b91ba",
+      "encryptionAlgorithm": "aes-128-cbc"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [
+    {
+      "accessType": "READ",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    },
+    {
+      "accessType": "WRITE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {
+  }
+}
